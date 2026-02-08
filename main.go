@@ -16,6 +16,7 @@ func main() {
 	HTTPRouter := router.NewHTTPServer("0.0.0.0")
 	HTTPRouter.Handle("/file/", http.StripPrefix("/file", fileServer))
 	HTTPRouter.HandleFunc("/hwinfo/cpu", router.CPUInfo)
+	HTTPRouter.HandleFunc("/hwinfo/gpu", router.GPUInfo)
 	HTTPRouter.HandleFunc("/", router.RootHandler)
 
 	fmt.Printf("Listening on port %s....\n", strings.Split(port, ":")[1])

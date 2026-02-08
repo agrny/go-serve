@@ -1,6 +1,7 @@
 package router
 
 import (
+	// "encoding/json"
 	"net/http"
 
 	"go-server/models"
@@ -21,7 +22,17 @@ func CPUInfo(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "could not get cpu info", http.StatusInternalServerError)
 		return
 	}
-	cpuJSON := cpu.JSONString(true)
+	cpuInfo := cpu.JSONString(false)
 	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(cpuJSON))
+	w.Write([]byte(cpuInfo))
+}
+func GPUInfo(w http.ResponseWriter, r *http.Request) {
+	gpu, err := ghw.GPU()
+	if err != nil {
+		http.Error(w, "could not get cpu info", http.StatusInternalServerError)
+		return
+	}
+	gpuInfo := gpu.JSONString(false)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write([]byte(gpuInfo))
 }
