@@ -1,6 +1,9 @@
+// Package router
 package router
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type HTTPRouter struct {
 	*http.ServeMux
