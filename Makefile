@@ -19,7 +19,7 @@ run: build
 
 # open all go files in editor
 edit:
-	@nvim */**.go
+	nvim $(shell find . -type f -name "*.go")
 
 # Clean build artifacts
 clean:
