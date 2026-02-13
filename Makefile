@@ -14,6 +14,13 @@ build:
 	GO111MODULE=on go build -o $(DIST)/$(BINARY) .
 	@echo "Binary created at $(DIST)/$(BINARY)"
 
+run: build
+	  @./$(DIST)/$(BINARY)
+
+# open all go files in editor
+edit:
+	@nvim */**.go
+
 # Clean build artifacts
 clean:
 	@echo "Cleaning..."

@@ -11,7 +11,7 @@ import (
 func main() {
 	port := ":2000"
 
-	fileServer := http.FileServer(http.Dir("."))
+	fileServer := http.FileServer(http.Dir("./file"))
 
 	HTTPRouter := router.NewHTTPServer("0.0.0.0")
 	HTTPRouter.Handle("/file/", http.StripPrefix("/file", fileServer))
